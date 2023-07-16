@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Code Runner</title>
+    <style>
+      #output {
+        border: 1px solid #ccc;
+        padding: 10px;
+        height: 200px;
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="code" rows="10" cols="50"></textarea>
+    <br><br>
+	<button onclick="runCode()">Run</button>
+    <br><br>
+	<iframe id="output" width="700" height="1000"></iframe>
+
+    <script>
+      function runCode() {
+        var code = document.getElementById("code").value;
+        var output = document.getElementById("output");
+
+        // Create an iframe element
+        var iframe = document.getElementById("output");
+        iframe.setAttribute("sandbox", "allow-scripts");
+
+        // Create a data URL with the code content
+        var codeDataUrl = "data:text/html;charset=utf-8," + encodeURIComponent(code);
+
+        // Set the iframe's src attribute to the code data URL
+        iframe.src = codeDataUrl;
+      }
+    </script>
+  </body>
+</html>
